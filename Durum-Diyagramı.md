@@ -1,13 +1,15 @@
-Bu sayfa durum diyagramının yer alacağı ana sayfa olacak. Durum diyagramı sadece 1 tane olacağı için tüm grup üyeleri bir araya gelerek gereksinim analizinde belirlemiş oldukları fonksiyonları durum diyagramı haline getirecek ve durum diyagramına ait resmi aşağıya ekleyecek.
-
-# Avakado Müzik Uygulaması Durum Diyagramı
+# Lumi Müzik Uygulaması Durum Diyagramı
 
 Durum diyagramı, Avakado Müzik uygulamasının ana işlevlerini ve kullanıcı etkileşimlerini göstermektedir. Diyagram aşağıdaki temel durumları içerir:
-- Kullanıcı Hesap Yönetimi (Giriş, Kayıt, Profil)
-- Müzik Arama ve Keşfetme
-- Çalma Listesi Yönetimi
-- Müzik Çalma ve Kontroller
-- Yapay Zeka Önerileri
-- Çevrimdışı Dinleme
+-Üye Olma
+-Giriş Yapma
+-Şifre Sıfırlama
+-Çıkış Yapma
+-Müzik Arama
+-Müzik Çalma
+-Müzik Durdurma
+-Müzik Beğenme
+-Müzik Değiştirme
+-Çalma Listesi Oluşturma
 
-[Durum diyagramı buraya eklenecek]
+![durum](https://github.com/user-attachments/assets/2b897f7d-2641-40cb-895e-cb3d476682ef)
