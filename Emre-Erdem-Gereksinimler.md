@@ -1,23 +1,61 @@
-# Emre Erdem Gereksinimleri
+# Lumi Müzik Uygulaması - Gereksinim Tanımları
 
-1. **Kullanıcı Kaydı:** Kullanıcıların Avakado Müzik platformuna ücretsiz veya premium üyelik oluşturabilmelerini sağlayan temel gereksinimdir. Kullanıcılar e-posta adresi, kullanıcı adı ve şifre bilgilerini girerek hesap oluşturabilirler. Ayrıca Google, Facebook veya Apple hesapları ile hızlı kayıt seçeneği de sunulacaktır. Kayıt işlemi sırasında kullanıcılardan temel müzik tercihleri (favori türler, sanatçılar) hakkında bilgi istenerek, ilk kullanımdan itibaren kişiselleştirilmiş bir deneyim sunulması hedeflenmektedir.
+## 1. Üye Olma
 
-2. **Kullanıcı Girişi:** Mevcut kullanıcıların kimlik doğrulama yaparak platforma erişimlerini sağlayan gereksinimdir. Kullanıcılar e-posta/kullanıcı adı ve şifre kombinasyonu ile giriş yapabilirler. Ayrıca üçüncü taraf hesaplarla (Google, Facebook, Apple) giriş yapma seçeneği de sunulacaktır. Kullanıcı güvenliği için iki faktörlü kimlik doğrulama (2FA) seçeneği sunularak, hesap güvenliği güçlendirilecektir. "Beni Hatırla" seçeneği ile kullanıcıların tercihlerine göre oturum açık kalabilecektir.
+**Üye Olma:** Kullanıcıların Lumi müzik platformuna ücretsiz veya premium üyelik oluşturabilmelerini sağlayan temel gereksinimdir. Kullanıcılar, e-posta adresi, kullanıcı adı ve şifre bilgilerini girerek hesap oluşturabilirler. Ayrıca Google, Apple veya Spotify hesapları ile hızlı kayıt seçeneği de sunulacaktır. Kayıt işlemi sırasında kullanıcılardan favori müzik türleri (örneğin, pop, rock, klasik) ve sevdiği sanatçılar hakkında bilgi alınarak, ilk kullanımdan itibaren kişiselleştirilmiş bir müzik deneyimi sunulması hedeflenmektedir.
 
-3. **Profil Yönetimi:** Kullanıcıların hesap bilgilerini görüntülemelerini ve düzenlemelerini sağlayan gereksinimdir. Kullanıcılar profil fotoğrafı, kullanıcı adı, şifre, e-posta adresi gibi kişisel bilgilerini güncelleyebilirler. Ayrıca müzik türü tercihleri, favori sanatçılar, dinleme alışkanlıkları gibi müzik tercihlerini de yönetebilirler. Premium üyelik yönetimi, ödeme bilgileri güncelleme ve abonelik durumu görüntüleme özellikleri de bu gereksinim kapsamındadır. Kullanıcılar ayrıca dinleme geçmişlerini görüntüleyebilir, temizleyebilir veya belirli öğeleri gizleyebilirler.
+---
 
-4. **Müzik Arama ve Filtreleme:** Kullanıcıların platformdaki geniş müzik kataloğunda arama yapabilmelerini sağlayan gereksinimdir. Kullanıcılar şarkı adı, sanatçı, albüm, tür, çalma listesi gibi anahtar kelimelerle arama yapabilirler. Arama sonuçları, sanatçı, albüm, şarkı, çalma listesi gibi kategorilere ayrılarak sunulur. Kullanıcılar arama sonuçlarını yayın tarihi, popülerlik, süre, tür gibi filtrelerle daraltabilirler. Arama algoritması, kullanıcının önceki aramalarını ve dinleme alışkanlıklarını göz önünde bulundurarak kişiselleştirilmiş sonuçlar sunar.
+## 2. Giriş Yapma
 
-5. **Çalma Listeleri Oluşturma ve Düzenleme:** Kullanıcıların kendi müzik koleksiyonlarını oluşturmalarını ve yönetmelerini sağlayan gereksinimdir. Kullanıcılar istedikleri şarkıları bir araya getirerek özel çalma listeleri oluşturabilirler. Çalma listelerine isim verme, açıklama ekleme, kapak resmi belirleme gibi kişiselleştirme seçenekleri sunulur. Kullanıcılar çalma listelerini düzenleyebilir, şarkı ekleyebilir, çıkarabilir veya sıralama değiştirebilirler. Çalma listeleri özel, herkese açık veya sadece belirli kişilerle paylaşılabilir şekilde ayarlanabilir.
+**Giriş Yapma:** Kullanıcıların Lumi müzik platformundaki mevcut hesaplarına erişmelerini sağlayan temel gereksinimdir. Kullanıcılar, e-posta adresi ve şifreleriyle giriş yapabilir ya da Google, Apple veya Spotify hesaplarıyla hızlı bir şekilde oturum açabilirler. Giriş işlemi sırasında "Beni Hatırla" seçeneği sunularak, tekrar eden girişlerde kullanıcı deneyimi kolaylaştırılacaktır. Ayrıca, giriş yapan kullanıcılar için son dinlenen şarkılar ve çalma listelerine hızlı erişim sağlanarak kesintisiz bir müzik deneyimi hedeflenmektedir.
 
-6. **Müzik Çalma ve Kontroller:** Kullanıcıların platforma eklenen müzikleri dinleyebilmelerini sağlayan temel gereksinimdir. Müzik çalma arayüzü, şarkının kapak resmini, başlığını, sanatçı bilgisini ve ilerleme çubuğunu gösterir. Temel kontroller (play, pause, ileri, geri, ses seviyesi) ile şarkıları yönetme imkanı sunar. İleri düzey kontroller (karıştır, tekrarla, zamanlayıcı, hız kontrolü) ile kişiselleştirilmiş dinleme deneyimi sağlar. Kullanıcılar şarkı çalarken diğer özellikleri kullanmaya devam edebilir veya arka planda müzik dinleyebilirler.
+---
 
-7. **Yapay Zeka Müzik Öneri Sistemi:** Kullanıcının dinleme alışkanlıklarını, beğendiği parçaları, dinleme sıklığını ve tercih ettiği sanatçıları analiz ederek kişiselleştirilmiş müzik önerileri sunan gelişmiş yapay zeka sistemidir. Bu sistem, makine öğrenmesi algoritmalarını kullanarak kullanıcının beğenebileceği yeni şarkıları, sanatçıları ve albümleri tahmin eder. Sistem ayrıca kullanıcının ruh haline, günün saatine ve mevsime göre özelleştirilmiş öneriler de sunabilir. Kullanıcının geri bildirimleri (beğenme, atlama, tekrar dinleme) ile sürekli olarak kendini geliştirir ve daha isabetli öneriler sunar. Sistem ayrıca kullanıcının daha önce hiç keşfetmediği türlerde de kaliteli içerikler önererek müzik zevkinin genişlemesine yardımcı olur.
+## 3. Şifre Sıfırlama
 
-8. **Çevrimdışı Dinleme:** Kullanıcıların internet bağlantısı olmadan müzik dinleyebilmelerini sağlayan gereksinimdir. Premium üyeler, şarkıları, albümleri veya çalma listelerini cihazlarına indirebilir ve çevrimdışı modda dinleyebilirler. İndirilen müzikler, kullanıcı cihazında güvenli bir şekilde şifrelenmiş olarak saklanır. Çevrimdışı dinleme modu, seyahat ederken veya internet bağlantısının zayıf olduğu yerlerde kesintisiz müzik deneyimi sunar. Kullanıcılar indirilen içerikleri yönetebilir, gereksiz içerikleri kaldırabilir ve depolama alanını optimize edebilirler.
+**Şifre Sıfırlama:** Kullanıcıların Lumi müzik platformunda unuttukları şifrelerini güvenli bir şekilde sıfırlamalarını sağlayan gereksinimdir. Kullanıcılar, kayıtlı e-posta adreslerini girerek bir şifre sıfırlama bağlantısı alabilirler. Bu bağlantı üzerinden yeni bir şifre oluşturabilirler. Güvenlik amacıyla, şifre sıfırlama bağlantısının belirli bir süre (örneğin, 1 saat) geçerli olması sağlanacak ve yeni şifrenin güçlü bir yapıya sahip olması için kriterler (en az 8 karakter, büyük harf, rakam) uygulanacaktır.
 
-9. **Sanatçı Takip Etme:** Kullanıcıların favori sanatçılarını takip ederek güncel kalmalarını sağlayan gereksinimdir. Kullanıcılar sanatçı profillerini ziyaret edebilir, biyografilerini okuyabilir ve diskografilerini inceleyebilirler. Sanatçıyı takip etme özelliği ile yeni müzik yayınları, konserler ve özel etkinlikler hakkında bildirim alabilirler. Takip edilen sanatçılar için özel öneriler ve içerikler (röportajlar, kamera arkası görüntüler, özel yayınlar) sunulabilir. Kullanıcılar ayrıca sanatçı sayfalarından bilet satın alma veya resmi merchandise ürünlerine erişim sağlayabilirler.
+---
 
-10. **Kullanıcı Etkileşim Sistemi:** Kullanıcıların platform üzerinde müziklerle ve diğer kullanıcılarla etkileşime girmesini sağlayan özellikleri içerir. Kullanıcılar şarkıları beğenebilir, yorumlayabilir ve paylaşabilirler. Ayrıca çalma listeleri oluşturabilir ve bu listeleri diğer kullanıcılarla paylaşabilirler. Kullanıcılar beğendikleri veya sık dinledikleri sanatçıları takip edebilir ve yeni müzik yayınladıklarında haberdar olabilirler. Platform içinde mesajlaşma özelliği ile kullanıcılar birbirleriyle müzik paylaşabilir veya müzik hakkında tartışabilirler. Sosyal medya entegrasyonu ile kullanıcılar dinledikleri müzikleri diğer platformlarda da paylaşabilirler.
+## 4. Çıkış Yapma
 
-11. **Bildirim Sistemi:** Kullanıcıları takip ettikleri sanatçıların yeni müzik yayınları, özel etkinlikler, konserler ve platformdaki güncellemeler hakkında bilgilendiren bir sistemdir. Bildirimler, kullanıcının tercihlerine göre e-posta, push notification veya uygulama içi mesaj olarak iletilebilir. Bildirim türleri (yeni albüm, yeni şarkı, platform güncellemeleri, öneriler vb.) kullanıcı tarafından özelleştirilebilir. Kullanıcı belirli saatlerde rahatsız edilmemeyi tercih edebilir veya tatil modunu etkinleştirebilir. Bildirim sistemi ayrıca kullanıcının müzik dinleme alışkanlıklarını analiz ederek "Haftalık Keşifler" gibi düzenli içerik önerileri de sunar. Kullanıcı, arkadaşlarının paylaştığı çalma listeleri ve önerdikleri şarkılar hakkında da bildirim alabilir. 
+**Çıkış Yapma:** Kullanıcıların Lumi müzik platformundaki oturumlarını güvenli bir şekilde sonlandırmalarını sağlayan gereksinimdir. Kullanıcılar, profil ayarları üzerinden "Çıkış Yap" seçeneğine tıklayarak oturumlarını kapatabilirler. Çıkış işlemi sırasında kullanıcıya "Çıkış yapmak istediğinizden emin misiniz?" sorusu sorularak yanlışlıkla çıkış yapmanın önüne geçilecektir. Çıkış yapan kullanıcılar, bir sonraki girişlerinde kişiselleştirilmiş ayarlarına ve çalma listelerine kaldıkları yerden erişebilecektir.
+
+---
+
+## 5. Müzik Arama
+
+**Müzik Arama:** Kullanıcıların Lumi müzik platformunda istedikleri şarkıları, sanatçıları veya albümleri kolayca bulmalarını sağlayan gereksinimdir. Kullanıcılar, arama çubuğuna şarkı adı, sanatçı ismi veya albüm adı girerek hızlı bir şekilde sonuçlara ulaşabilirler. Arama sırasında otomatik tamamlama özelliği sunularak kullanıcı deneyimi iyileştirilecek ve popüler arama trendleri önerilecektir. Ayrıca, arama sonuçları arasında filtreleme (örneğin, türe veya yıla göre) seçenekleri sağlanarak kullanıcıların aradıklarını daha hızlı bulmaları hedeflenmektedir.
+
+---
+
+## 6. Müzik Çalma
+
+**Müzik Çalma:** Kullanıcıların Lumi müzik platformunda seçtikleri şarkıları veya albümleri dinlemelerini sağlayan temel gereksinimdir. Kullanıcılar, bir şarkıyı seçip "Çal" butonuna tıklayarak müziği başlatabilirler. Çalma işlemi sırasında şarkı bilgileri (sanatçı, albüm, süre) ve albüm kapağı görüntülenerek görsel bir deneyim sunulacaktır. Ayrıca, arka planda çalma desteği ve çevrimdışı modda dinleme seçeneği (premium kullanıcılar için) ile kesintisiz bir müzik deneyimi sağlanması hedeflenmektedir.
+
+---
+
+## 7. Müzik Durdurma
+
+**Müzik Durdurma:** Kullanıcıların Lumi müzik platformunda çalan bir şarkıyı geçici olarak durdurmalarını sağlayan gereksinimdir. Kullanıcılar, oynatma ekranındaki "Durdur" (Pause) butonuna tıklayarak müziği durdurabilirler. Durdurma işlemi sırasında şarkının kaldığı yer kaydedilecek ve kullanıcı "Çal" butonuna tekrar tıkladığında şarkı kaldığı yerden devam edecektir. Bu özellik, kullanıcıların müzik dinleme deneyimini kesintiye uğratmadan kontrol etmelerini sağlayarak esneklik sunmayı hedeflemektedir.
+
+---
+
+## 8. Müzik Beğenme
+
+**Müzik Beğenme:** Kullanıcıların Lumi müzik platformunda dinledikleri veya keşfettikleri şarkıları beğenmelerini ve kişisel bir koleksiyon oluşturmalarını sağlayan gereksinimdir. Kullanıcılar, oynatma ekranında veya şarkı detay sayfasında "Beğen" (Like) simgesine tıklayarak şarkıyı "Beğenilen Şarkılar" listesine ekleyebilirler. Beğenilen şarkılar, kullanıcıya özel öneriler oluşturmak için kullanılacak ve bu liste üzerinden hızlı erişim sağlanacaktır. Ayrıca, beğenme işleminin geri alınabilmesi için bir seçenek sunularak kullanıcı kontrolü artırılacaktır.
+
+---
+
+## 9. Müzik Değiştirme
+
+**Müzik Değiştirme:** Kullanıcıların Lumi müzik platformunda çalan şarkıyı değiştirerek bir sonraki veya önceki şarkıya geçmelerini sağlayan gereksinimdir. Kullanıcılar, oynatma ekranındaki "Sonraki Şarkı" veya "Önceki Şarkı" butonlarına tıklayarak şarkılar arasında geçiş yapabilirler. Çalma listesi veya albüm içinde otomatik geçiş özelliği sunularak kesintisiz bir dinleme deneyimi sağlanacaktır. Ayrıca, şarkı değiştirme işlemi sırasında kısa bir önizleme (örneğin, 3 saniyelik bir geçiş efekti) ile kullanıcıya görsel ve işitsel bir geri bildirim verilmesi hedeflenmektedir.
+
+---
+
+## 10. Çalma Listesi Oluşturma
+
+**Çalma Listesi Oluşturma:** Kullanıcıların Lumi müzik platformunda kendi çalma listelerini oluşturmalarını ve favori şarkılarını bir araya getirmelerini sağlayan gereksinimdir. Kullanıcılar, "Yeni Çalma Listesi Oluştur" butonuna tıklayarak bir isim belirtebilir (örneğin, "Favori Rock Şarkılarım") ve istedikleri şarkıları listeye ekleyebilirler. Çalma listelerine kapak resmi ekleme ve paylaşma seçenekleri sunularak sosyal bir deneyim sağlanacaktır. Ayrıca, kullanıcıların ruh hallerine veya etkinliklere göre önerilen çalma listeleri (örneğin, "Egzersiz için Şarkılar") otomatik olarak oluşturulabilecektir.
+
+---
