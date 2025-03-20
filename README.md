@@ -1,4 +1,4 @@
-# AVAKADO MÜZİK
+# Lumi (Müzik Uygulaması)
 
 **Proje Tanımı:** Avakado Müzik, kullanıcıların kesintisiz müzik deneyimi yaşamaları için tasarlanmış bir dijital müzik platformudur. YouTube Music benzeri bir arayüz ve işlevsellik sunan uygulamamız, yapay zeka destekli kişiselleştirilmiş müzik önerileri ile kullanıcıların müzik zevklerine göre özel bir deneyim sunmaktadır. Kullanıcılar platformda milyonlarca şarkıya erişebilir, kendi çalma listelerini oluşturabilir, dinleme alışkanlıklarına göre yapay zeka algoritmalarımız tarafından önerilen yeni müzikleri keşfedebilir ve sevdikleri sanatçıları takip edebilirler. Avakado Müzik, kullanıcı dostu arayüzü, hızlı arama özellikleri ve kaliteli ses deneyimi ile müzik tutkunlarının yeni gözdesi olmayı hedeflemektedir. Platformumuz hem mobil cihazlar hem de masaüstü kullanıcıları için optimize edilmiş olup, çevrimdışı dinleme ve arka planda çalma özellikleri ile müziğin her an her yerde yanınızda olmasını sağlar.
 
