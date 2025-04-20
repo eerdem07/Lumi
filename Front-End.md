@@ -10,6 +10,7 @@ Frontend'i yayınladığınız domain adresi: http://example.com
 7. Müzik Çalma Arayüzü
 8. Çalma Kontrolleri (Ses, İleri/Geri, Karıştır, Tekrarla)
 9. Mini Oynatıcı
+---------------------
 10. Müzik Arama Sayfası
 11. Arama Filtreleri ve Sonuçları
 12. Sanatçı Profil Sayfası
