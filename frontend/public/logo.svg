@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 324">
+  <!-- Beyaz daire -->
+  <circle cx="162" cy="162" r="162" fill="#ffffff"></circle>
+
+  <!-- Dalga çubukları -->
+  <!-- Sol en küçük -->
+  <rect x="80" y="112" width="30" height="100" rx="15" fill="#000000"></rect>
+  <!-- Sol orta -->
+  <rect x="116" y=" 82" width="30" height="160" rx="15" fill="#000000"></rect>
+  <!-- Ortadaki en büyük -->
+  <rect x="152" y=" 52" width="30" height="220" rx="15" fill="#000000"></rect>
+  <!-- Sağ orta -->
+  <rect x="188" y=" 82" width="30" height="160" rx="15" fill="#000000"></rect>
+  <!-- Sağ en küçük -->
+  <rect x="224" y="112" width="30" height="100" rx="15" fill="#000000"></rect>
+</svg>
