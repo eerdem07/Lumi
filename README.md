@@ -4,9 +4,9 @@
 
 **Proje Kategorisi:** Dijital Müzik Platformu / Müzik Streaming Servisi
 
-**Referans Uygulama:** [YouTube Music](https://music.youtube.com)
+**Referans Uygulama:** [Spotify](https://spotify.com)
 
-**Uygulama Adresi:** [example.com](http://example.com)
+**Uygulama Adresi:** [lumi.com]([http://example.com](https://lumi-cws78ilzt-jacobss7s-projects.vercel.app/))
 
 **Grup Adı:** Avokado
 
