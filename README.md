@@ -6,7 +6,7 @@
 
 **Referans Uygulama:** [Spotify](https://spotify.com)
 
-**Uygulama Adresi:** [lumi.com]([http://example.com](https://lumi-cws78ilzt-jacobss7s-projects.vercel.app/))
+**Uygulama Adresi:** [Lumi]([http://example.com](https://lumi-cws78ilzt-jacobss7s-projects.vercel.app/))
 
 **Grup Adı:** Avokado
 
