@@ -8,7 +8,7 @@ function SearchBar() {
       </div>
       <input
         type="search"
-        className="block w-80 p-2 pl-10 text-sm text-white border-none rounded-full bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-white"
+        className="block w-full sm:w-72 md:w-80 p-2 pl-10 text-sm text-white border-none rounded-full bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-white"
         placeholder="Ne çalmak istiyorsun?"
       />
     </div>

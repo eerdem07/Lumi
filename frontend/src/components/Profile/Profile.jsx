@@ -7,21 +7,25 @@ import ArtistGrid from "./ArtistGrid";
 export default function Profile() {
   const artists = [
     {
-      name: "Mezdeke",
-      image: "assets/albums/disturbed?height=120&width=120",
+      name: "Disturbed",
+      image: "/albums/disturbed.jpg?height=120&width=120",
     },
-    { name: "Disturbed", image: "/placeholder.svg?height=120&width=120" },
-    { name: "Linkin Park", image: "/placeholder.svg?height=120&width=120" },
-    { name: "Indila", image: "/placeholder.svg?height=120&width=120" },
-    { name: "John Williams", image: "/placeholder.svg?height=120&width=120" },
-    { name: "Klaus Badelt", image: "/placeholder.svg?height=120&width=120" },
-    { name: "Sagopa Kajmer", image: "/placeholder.svg?height=120&width=120" },
-    { name: "John Powell", image: "/placeholder.svg?height=120&width=120" },
     {
-      name: "Michael Giacchino",
-      image: "/placeholder.svg?height=120&width=120",
+      name: "Mezdeke",
+      image: "/albums/mezdeke.jpg?height=120&width=120",
     },
-    { name: "Brian Tyler", image: "/placeholder.svg?height=120&width=120" },
+    {
+      name: "Indila",
+      image: "/albums/indila.jpg?height=120&width=120",
+    },
+    {
+      name: "Linkin Park",
+      image: "/albums/linkin-park.jpg?height=120&width=120",
+    },
+    {
+      name: "Intizar",
+      image: "/albums/intizar.jpg?height=120&width=120",""
+    },
   ];
 
   const profileInfo = {

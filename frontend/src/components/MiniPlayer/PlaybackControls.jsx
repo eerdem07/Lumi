@@ -9,15 +9,15 @@ import {
 
 function PlaybackControls({ isPlaying, onPlayPause, isRepeating, onRepeat }) {
   return (
-    <div className="flex items-center gap-4 mb-2">
-      <button className="text-zinc-400 hover:text-white">
-        <Shuffle className="w-4 h-4" />
+    <div className="flex items-center gap-2 sm:gap-4 mb-2">
+      <button className="text-zinc-400 hover:text-white hidden sm:inline-flex">
+        <Shuffle className="w-5 h-5" />
       </button>
       <button className="text-zinc-400 hover:text-white">
-        <SkipBack className="w-4 h-4" />
+        <SkipBack className="w-5 h-5" />
       </button>
       <button
-        className="w-8 h-8 rounded-full bg-white flex items-center justify-center"
+        className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white flex items-center justify-center"
         onClick={onPlayPause}
       >
         {isPlaying ? (
@@ -25,7 +25,7 @@ function PlaybackControls({ isPlaying, onPlayPause, isRepeating, onRepeat }) {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-4 h-4 text-black"
+            className="w-5 h-5 text-black"
           >
             <path
               fillRule="evenodd"
@@ -34,17 +34,20 @@ function PlaybackControls({ isPlaying, onPlayPause, isRepeating, onRepeat }) {
             />
           </svg>
         ) : (
-          <Play className="w-4 h-4 text-black" />
+          <Play className="w-5 h-5 text-black" />
         )}
       </button>
       <button className="text-zinc-400 hover:text-white">
-        <SkipForward className="w-4 h-4" />
+        <SkipForward className="w-5 h-5" />
       </button>
-      <button className="text-zinc-400 hover:text-white" onClick={onRepeat}>
+      <button
+        className="text-zinc-400 hover:text-white hidden sm:inline-flex"
+        onClick={onRepeat}
+      >
         {isRepeating ? (
-          <Repeat1 className="w-4 h-4 text-white" />
+          <Repeat1 className="w-5 h-5 text-white" />
         ) : (
-          <Repeat className="w-4 h-4" />
+          <Repeat className="w-5 h-5" />
         )}
       </button>
     </div>

@@ -3,9 +3,9 @@ import React from "react";
 function ArtistCard({ artist }) {
   return (
     <div className="flex flex-col items-center group">
-      <div className="w-full aspect-square rounded-full overflow-hidden mb-3 cursor-pointer">
+      <div className="w-full aspect-square rounded-full overflow-hidden mb-2 sm:mb-3 cursor-pointer">
         <img
-          src={artist.image}
+          src="/albums/intizar.jpg"
           alt={artist.name}
           className="w-full h-full object-cover group-hover:opacity-70 transition-opacity"
         />

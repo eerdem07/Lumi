@@ -17,32 +17,39 @@ export default function MiniPlayer() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isRepeating, setIsRepeating] = useState(false);
-  const audioSource = "src/assets/musics/sensiz-olamam.mp3";
+  const audioSource = "/musics/sensiz-olamam.mp3";
   const trackInfo = {
-    imageUrl: "/placeholder.svg",
+    imageUrl: "/albums/intizar.jpg",
     title: "Sensiz Olamam",
-    artist: "İmtizar",
+    artist: "İntizar",
   };
 
   const togglePlay = () => {
+    if (!audioRef.current) return;
     if (isPlaying) {
       audioRef.current.pause();
     } else {
-      audioRef.current.play();
+      audioRef.current
+        .play()
+        .catch((error) => console.error("Play error:", error));
     }
     setIsPlaying(!isPlaying);
   };
 
   const handleTimeUpdate = () => {
+    if (!audioRef.current) return;
     setCurrentTime(audioRef.current.currentTime);
   };
 
   const handleLoadedMetadata = () => {
+    if (!audioRef.current) return;
     setDuration(audioRef.current.duration);
+    audioRef.current.volume = volume;
+    audioRef.current.loop = isRepeating;
   };
 
   const formatTime = (time) => {
-    if (isNaN(time)) {
+    if (isNaN(time) || time === Infinity) {
       return "0:00";
     }
     const minutes = Math.floor(time / 60);
@@ -53,6 +60,7 @@ export default function MiniPlayer() {
   };
 
   const handleSeek = (e) => {
+    if (!audioRef.current || isNaN(duration) || duration === 0) return;
     const seekTime = (parseFloat(e.target.value) / 100) * duration;
     audioRef.current.currentTime = seekTime;
     setCurrentTime(seekTime);
@@ -68,23 +76,45 @@ export default function MiniPlayer() {
   };
 
   const toggleRepeat = () => {
-    setIsRepeating(!isRepeating);
+    const nextRepeatingState = !isRepeating;
+    setIsRepeating(nextRepeatingState);
     if (audioRef.current) {
-      audioRef.current.loop = !isRepeating;
+      audioRef.current.loop = nextRepeatingState;
     }
   };
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume;
-      audioRef.current.loop = isRepeating;
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      audioElement.volume = volume;
+      audioElement.loop = isRepeating;
+
+      const handlePlay = () => setIsPlaying(true);
+      const handlePause = () => setIsPlaying(false);
+
+      audioElement.addEventListener("play", handlePlay);
+      audioElement.addEventListener("pause", handlePause);
+      audioElement.addEventListener("ended", () => {
+        if (!audioElement.loop) {
+          setIsPlaying(false);
+          setCurrentTime(0);
+        }
+      });
+
+      return () => {
+        audioElement.removeEventListener("play", handlePlay);
+        audioElement.removeEventListener("pause", handlePause);
+      };
     }
   }, [audioRef, volume, isRepeating]);
 
   return (
-    <div className="h-20 bg-zinc-900 border-t border-zinc-800 flex items-center px-4">
-      <NowPlayingInfo {...trackInfo} />
-      <div className="flex flex-col items-center w-1/3">
+    <div className="h-20 bg-zinc-900 border-t border-zinc-800 flex items-center justify-between px-2 sm:px-4">
+      <div className="w-[30%] md:w-[25%] max-w-[180px] sm:max-w-[220px] lg:max-w-[300px]">
+        <NowPlayingInfo {...trackInfo} />
+      </div>
+
+      <div className="flex flex-col items-center flex-grow mx-2 sm:mx-4">
         <PlaybackControls
           isPlaying={isPlaying}
           onPlayPause={togglePlay}
@@ -98,18 +128,20 @@ export default function MiniPlayer() {
           formatTime={formatTime}
         />
       </div>
-      <div className="flex items-center justify-end w-1/3 gap-3">
-        <button className="text-zinc-400 hover:text-white">
-          <ListMusic className="w-4 h-4" />
+
+      <div className="flex items-center justify-end w-[30%] md:w-[25%] max-w-[180px] sm:max-w-[220px] lg:max-w-[300px] gap-2 sm:gap-3">
+        <button className="text-zinc-400 hover:text-white hidden md:inline-flex">
+          <ListMusic className="w-4 h-4 lg:w-5 lg:h-5" />
         </button>
         <VolumeControls volume={volume} onVolumeChange={handleVolumeChange} />
       </div>
+
       <audio
         ref={audioRef}
         src={audioSource}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
-        loop={isRepeating}
+        preload="metadata"
       />
     </div>
   );
