@@ -13,7 +13,6 @@ exports.getAllTracks = async (req, res) => {
       return res.status(200).json(JSON.parse(cached));
     }
 
-    // MongoDB'den çek
     const tracks = await Track.find({}).populate("artist", "name");
     const tracksWithArtistName = tracks.map((track) => {
       const t = track.toObject();
@@ -21,7 +20,6 @@ exports.getAllTracks = async (req, res) => {
       return t;
     });
 
-    // Redis'e 10 dakika (600 saniye) boyunca kaydet
     await redisClient.setEx(
       "allTracks",
       600,

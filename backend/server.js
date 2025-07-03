@@ -21,7 +21,7 @@ async function startServer() {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log("Connected to MongoDB");
 
-    app.listen(process.env.PORT || 3000, () => {
+    app.listen(process.env.PORT || 8080, () => {
       console.log(`Server is running on port ${process.env.PORT}`);
     });
   } catch (error) {
