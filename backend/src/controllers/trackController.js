@@ -3,28 +3,14 @@ const Artist = require("../models/Artist");
 const Album = require("../models/Album");
 const User = require("../models/User");
 
-const redisClient = require("../redisClient");
-
 exports.getAllTracks = async (req, res) => {
   try {
-    // Redis cache kontrolü
-    const cached = await redisClient.get("allTracks");
-    if (cached) {
-      return res.status(200).json(JSON.parse(cached));
-    }
-
     const tracks = await Track.find({}).populate("artist", "name");
     const tracksWithArtistName = tracks.map((track) => {
       const t = track.toObject();
       t.artist = t.artist && t.artist.name ? t.artist.name : t.artist;
       return t;
     });
-
-    await redisClient.setEx(
-      "allTracks",
-      600,
-      JSON.stringify(tracksWithArtistName)
-    );
 
     res.status(200).json(tracksWithArtistName);
   } catch (err) {
@@ -33,7 +19,6 @@ exports.getAllTracks = async (req, res) => {
   }
 };
 
-// --- 1. Müzik Arama ---
 exports.searchTracks = async (req, res) => {
   try {
     const { q, genre } = req.query;

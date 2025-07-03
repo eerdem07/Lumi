@@ -13,11 +13,11 @@ RUN npm install --omit=dev
 # 5. Projedeki tüm dosyaları kopyala
 COPY . .
 
-# 6. Ortam değişkeni olarak prod PORT'u ayarla (isteğe bağlı, Cloud Run için genellikle 8080'dir)
+# 6. (İsteğe bağlı) Default portu ayarla (ama Cloud Run yine kendi PORT'u override eder)
 ENV PORT=8080
 
-# 7. Uygulamayı başlat
-CMD ["npm", "start"]
-
-# 8. Portu expose et
+# 7. Portu dışa aç
 EXPOSE 8080
+
+# 8. Uygulamayı başlat
+CMD ["npm", "start"]

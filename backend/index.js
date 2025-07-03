@@ -4,9 +4,6 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const AppError = require("./src/utils/AppError");
 
-// Redis burada require edilir ama .connect edilmez!
-const redisClient = require("./src/redisClient");
-
 const app = express();
 
 app.use(express.json());
