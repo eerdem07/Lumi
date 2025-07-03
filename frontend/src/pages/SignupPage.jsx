@@ -1,20 +1,96 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../features/userSlice";
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const SignupPage = () => {
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setSuccess(false);
+
+    if (!form.name || !form.email || !form.password || !form.confirmPassword) {
+      setError("Lütfen tüm alanları doldurun.");
+      return;
+    }
+    if (form.password !== form.confirmPassword) {
+      setError("Şifreler eşleşmiyor.");
+      return;
+    }
+    if (form.password.length < 6) {
+      setError("Şifre en az 6 karakter olmalı.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch(`${apiUrl}/auth/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name, // Doğru key!
+          email: form.email,
+          password: form.password,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.message || "Kayıt sırasında bir hata oluştu.");
+      } else {
+        setSuccess(true);
+
+        // Hem Redux, hem localStorage için doğru keylerle kaydet!
+        if (data.token && data.user) {
+          dispatch(
+            setCredentials({
+              user: {
+                id: data.user.id,
+                name: data.user.name,
+                email: data.user.email,
+                role: data.user.role,
+              },
+              token: data.token,
+            })
+          );
+          localStorage.setItem("token", data.token);
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              id: data.user.id,
+              name: data.user.name,
+              email: data.user.email,
+              role: data.user.role,
+            })
+          );
+        }
+        setTimeout(() => (window.location.href = "/"), 1200);
+      }
+    } catch (err) {
+      setError("Bağlantı hatası!");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -42,6 +118,7 @@ const SignupPage = () => {
               onChange={handleChange}
               placeholder="Adınızı girin"
               className="mt-1 w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              disabled={loading}
             />
           </div>
 
@@ -57,6 +134,7 @@ const SignupPage = () => {
               onChange={handleChange}
               placeholder="E‑posta adresinizi girin"
               className="mt-1 w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              disabled={loading}
             />
           </div>
 
@@ -72,6 +150,7 @@ const SignupPage = () => {
               onChange={handleChange}
               placeholder="Şifrenizi oluşturun"
               className="mt-1 w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              disabled={loading}
             />
           </div>
 
@@ -90,15 +169,26 @@ const SignupPage = () => {
               onChange={handleChange}
               placeholder="Şifrenizi tekrar girin"
               className="mt-1 w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              disabled={loading}
             />
           </div>
 
           <button
             type="submit"
             className="w-full bg-green-500 hover:bg-green-600 text-black font-semibold py-2 rounded-full"
+            disabled={loading}
           >
-            Kaydol
+            {loading ? "Kaydediliyor..." : "Kaydol"}
           </button>
+
+          {error && (
+            <div className="text-red-400 text-center text-sm mt-2">{error}</div>
+          )}
+          {success && (
+            <div className="text-green-400 text-center text-sm mt-2">
+              Kayıt başarılı! Yönlendiriliyorsunuz...
+            </div>
+          )}
         </form>
 
         <p className="text-center text-sm text-gray-400">

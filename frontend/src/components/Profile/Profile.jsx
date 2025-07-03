@@ -1,4 +1,3 @@
-import React from "react";
 import ProfileHeader from "./ProfileHeader";
 import ProfileOptionsButton from "./ProfileOptionsButton";
 import MostListenedArtists from "./MostListenedArtists";

@@ -1,25 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppLogo from "./AppLogo";
 import TopNavigation from "./TopNavigation";
 import CreatePlaylistButton from "./CreatePlaylistButton";
 import LibraryFilters from "./LibraryFilters";
 import RecentlyPlayed from "./RecentlyPlayed";
 import PlaylistList from "./PlaylistList";
+import LikedTracksList from "./LikedTracksList";
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
-const examplePlaylists = [
-  { id: "liked", name: "Beğenilen Şarkılar", songCount: 1473, type: "liked" },
-  { id: 1, name: "Ağır Siklet Çalışma", owner: "Emre Erdem", songCount: 50 },
-  { id: 2, name: "Kodlama Modu", owner: "Spotify", songCount: 120 },
-  { id: 3, name: "Yolculuk Şarkıları", owner: "Emre Erdem", songCount: 75 },
-  { id: 4, name: "Film Müzikleri", owner: "Emre Erdem", songCount: 250 },
-];
+export default function SideBar({ setIsModalOpen, onTrackPlay }) {
+  const [likedTracks, setLikedTracks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-export default function SideBar({ setIsModalOpen }) {
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // veya hangi storage'da tutuyorsan
+    fetch(`${apiUrl}/tracks/liked`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      credentials: "include", // gerekirse, genellikle gerekmez ama auth cookie kullanıyorsan bırakabilirsin
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLikedTracks(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  const playlists = [
+    {
+      id: "liked",
+      name: "Beğenilen Şarkılar",
+      songCount: likedTracks.length,
+      type: "liked",
+    },
+    // Diğer playlistleri ekle
+  ];
+
   return (
     <div className="w-20 md:w-64 h-screen flex flex-col bg-black text-white transition-all duration-300 ease-in-out">
       <div className="p-3 md:p-6 space-y-3 md:space-y-6">
         <AppLogo />
-
         <TopNavigation />
       </div>
 
@@ -27,10 +49,13 @@ export default function SideBar({ setIsModalOpen }) {
         <CreatePlaylistButton setIsModalOpen={setIsModalOpen} />
 
         <LibraryFilters />
-
-        <RecentlyPlayed />
-
-        <PlaylistList playlists={examplePlaylists} />
+        <LikedTracksList
+          tracks={likedTracks}
+          loading={loading}
+          onTrackClick={onTrackPlay}
+        />
+        {/* <RecentlyPlayed /> */}
+        {/* <PlaylistList playlists={playlists} /> */}
       </div>
     </div>
   );

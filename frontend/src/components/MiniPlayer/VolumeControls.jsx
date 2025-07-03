@@ -12,6 +12,7 @@ function VolumeControls({ volume, onVolumeChange }) {
         step="0.01"
         value={volume}
         onChange={onVolumeChange}
+        aria-label="Ses Seviyesi"
       />
     </div>
   );

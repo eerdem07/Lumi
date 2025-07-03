@@ -19,8 +19,10 @@ function PlaybackControls({ isPlaying, onPlayPause, isRepeating, onRepeat }) {
       <button
         className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white flex items-center justify-center"
         onClick={onPlayPause}
+        aria-label={isPlaying ? "Durdur" : "Çal"}
       >
         {isPlaying ? (
+          // Pause SVG (daha yumuşak animasyon isteyenler için svg ile)
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -43,6 +45,7 @@ function PlaybackControls({ isPlaying, onPlayPause, isRepeating, onRepeat }) {
       <button
         className="text-zinc-400 hover:text-white hidden sm:inline-flex"
         onClick={onRepeat}
+        aria-label="Tekrar"
       >
         {isRepeating ? (
           <Repeat1 className="w-5 h-5 text-white" />

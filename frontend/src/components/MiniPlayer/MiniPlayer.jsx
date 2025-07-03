@@ -7,7 +7,7 @@ import VolumeControls from "./VolumeControls";
 
 const VOLUME_STORAGE_KEY = "audioVolume";
 
-export default function MiniPlayer() {
+export default function MiniPlayer({ track }) {
   const audioRef = useRef(null);
   const initialVolume = localStorage.getItem(VOLUME_STORAGE_KEY);
   const [volume, setVolume] = useState(
@@ -17,23 +17,50 @@ export default function MiniPlayer() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isRepeating, setIsRepeating] = useState(false);
-  const audioSource = "/musics/sensiz-olamam.mp3";
-  const trackInfo = {
-    imageUrl: "/albums/intizar.jpg",
-    title: "Sensiz Olamam",
-    artist: "İntizar",
-  };
+
+  const audioSource = track?.audioUrl || "";
+  const trackInfo = track
+    ? {
+        imageUrl: track.coverImageUrl,
+        title: track.title,
+        artist:
+          typeof track.artist === "object" ? track.artist.name : track.artist,
+      }
+    : null;
+
+  // Track değiştiğinde şarkıyı otomatik başlat
+  useEffect(() => {
+    if (audioRef.current && track) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setCurrentTime(0);
+      setIsPlaying(false);
+
+      // Oynatıcıya programatik olarak play() çağır, tarayıcı otomatik başlatmaya izin verirse
+      setTimeout(() => {
+        audioRef.current.load();
+        audioRef.current
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch(() => {}); // Autoplay engeli olabilir, kullanıcı Play'e tıklayınca tekrar çalacak
+      }, 100);
+    }
+  }, [audioSource]); // Burada audioSource değişimini takip etmek daha güvenlidir
 
   const togglePlay = () => {
     if (!audioRef.current) return;
     if (isPlaying) {
       audioRef.current.pause();
+      setIsPlaying(false);
     } else {
       audioRef.current
         .play()
-        .catch((error) => console.error("Play error:", error));
+        .then(() => setIsPlaying(true))
+        .catch((error) => {
+          setIsPlaying(false);
+          console.error("Play error:", error);
+        });
     }
-    setIsPlaying(!isPlaying);
   };
 
   const handleTimeUpdate = () => {
@@ -108,10 +135,26 @@ export default function MiniPlayer() {
     }
   }, [audioRef, volume, isRepeating]);
 
+  if (!track) {
+    return (
+      <div className="h-20 bg-zinc-900 border-t border-zinc-800 flex items-center justify-center text-zinc-400">
+        Şarkı seçilmedi
+      </div>
+    );
+  }
+
   return (
     <div className="h-20 bg-zinc-900 border-t border-zinc-800 flex items-center justify-between px-2 sm:px-4">
       <div className="w-[30%] md:w-[25%] max-w-[180px] sm:max-w-[220px] lg:max-w-[300px]">
-        <NowPlayingInfo {...trackInfo} />
+        <NowPlayingInfo
+          imageUrl={track.coverImageUrl}
+          title={track.title}
+          artist={
+            typeof track.artist === "object" ? track.artist.name : track.artist
+          }
+          trackId={track._id}
+          initiallyLiked={track.liked} // Eğer API'dan track.liked geliyorsa, yoksa false
+        />
       </div>
 
       <div className="flex flex-col items-center flex-grow mx-2 sm:mx-4">
