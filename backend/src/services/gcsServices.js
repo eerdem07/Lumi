@@ -1,13 +1,16 @@
-const path = require("path");
 const { Storage } = require("@google-cloud/storage");
 
+// ENV üzerinden key ve diğer bilgiler
+const credentials = JSON.parse(process.env.GCS_KEY_JSON);
+
 const storage = new Storage({
-  keyFilename: path.join(__dirname, "../../src/config/gcsKey.json"), // Yolunu dosya konumuna göre ayarla!
-  projectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
+  credentials, // JSON anahtar doğrudan burada
+  projectId: process.env.GOOGLE_CLOUD_PROJECT_ID, // .env'de olmalı
 });
+
 const bucketName = process.env.GOOGLE_CLOUD_STORAGE_BUCKET;
 
-// Yükleme
+// Dosya yükleme fonksiyonu
 async function uploadFile(destination, buffer, mimetype) {
   return new Promise((resolve, reject) => {
     const bucket = storage.bucket(bucketName);
@@ -19,7 +22,7 @@ async function uploadFile(destination, buffer, mimetype) {
 
     stream.on("error", (err) => reject(err));
     stream.on("finish", async () => {
-      // await file.makePublic(); // BUNU SİL veya YORUM SATIRI YAP!
+      // await file.makePublic(); // Açık bırakmak istemiyorsan YORUMDA KALSIN
       const publicUrl = getPublicUrl(destination);
       resolve(publicUrl);
     });
@@ -28,13 +31,13 @@ async function uploadFile(destination, buffer, mimetype) {
   });
 }
 
-// Silme
+// Dosya silme fonksiyonu
 async function deleteFile(destination) {
   const bucket = storage.bucket(bucketName);
   await bucket.file(destination).delete();
 }
 
-// Dosya URL'si
+// Dosya URL'si oluşturucu
 function getPublicUrl(destination) {
   return `https://storage.googleapis.com/${bucketName}/${destination}`;
 }
