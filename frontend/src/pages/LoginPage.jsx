@@ -6,6 +6,8 @@ const apiUrl = import.meta.env.VITE_API_BASE_URL;
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  console.log(apiUrl);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
