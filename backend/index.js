@@ -8,8 +8,12 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
-
+app.use(
+  cors({
+    origin: "https://lumi-frontend-287286640888.europe-west1.run.app",
+    credentials: true,
+  })
+);
 app.use(helmet());
 app.use(morgan("dev"));
 

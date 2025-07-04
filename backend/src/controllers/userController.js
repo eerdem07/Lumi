@@ -1,5 +1,4 @@
 const User = require("../models/User");
-// PUT /api/users/profile
 exports.updateProfile = async (req, res) => {
   try {
     const userId = req.user.id; // auth middleware'den gelir
@@ -9,7 +8,6 @@ exports.updateProfile = async (req, res) => {
       return res.status(400).json({ message: "İsim zorunludur." });
     }
 
-    // Sadece name ve bio güncellenebilir
     const updatedUser = await User.findByIdAndUpdate(
       userId,
       {

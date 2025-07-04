@@ -7,7 +7,6 @@ const trackFileController = require("../controllers/trackFileController");
 
 router.get("/:trackId/file", trackFileController.getTrackFile);
 
-// Yükleme
 router.post(
   "/upload-audio",
   auth,
@@ -16,7 +15,6 @@ router.post(
   trackFileController.uploadTrackAudio
 );
 
-// Silme
 router.delete(
   "/:trackId",
   auth,
