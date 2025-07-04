@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: null, // {id, firstName, lastName, email, bio, ...}
+  user: null,
   token: null,
   isAuthenticated: false,
 };
@@ -21,7 +21,6 @@ const userSlice = createSlice({
       state.isAuthenticated = false;
     },
     updateUser: (state, action) => {
-      // Gelen verilerle user'ı günceller
       if (state.user) {
         state.user = {
           ...state.user,

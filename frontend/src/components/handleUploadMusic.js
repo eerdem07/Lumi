@@ -1,4 +1,6 @@
-const apiUrl = import.meta.env.VITE_API_BASE_URL;
+// const apiUrl = import.meta.env.VITE_API_BASE_URL;
+
+const apiUrl = "https://lumi-287286640888.europe-west1.run.app/api";
 
 const handleUploadMusic = async ({
   title,

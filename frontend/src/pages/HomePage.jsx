@@ -6,14 +6,15 @@ import TopBar from "../components/TopBar/TopBar";
 import PlaylistModal from "../components/PlaylistModal";
 import MediaCard from "../components/Card/MediaCard";
 import { useSelector } from "react-redux";
-const apiUrl = import.meta.env.VITE_API_BASE_URL;
+// const apiUrl = import.meta.env.VITE_API_BASE_URL;
+
+const apiUrl = "https://lumi-287286640888.europe-west1.run.app/api";
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tracks, setTracks] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // --- Çalan şarkı state'i
   const [nowPlaying, setNowPlaying] = useState(null);
 
   const user = useSelector((state) => state.user.user);
