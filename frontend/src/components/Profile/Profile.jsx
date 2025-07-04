@@ -23,7 +23,7 @@ export default function Profile() {
     },
     {
       name: "Intizar",
-      image: "/albums/intizar.jpg?height=120&width=120",""
+      image: "/albums/intizar.jpg?height=120&width=120",
     },
   ];
 

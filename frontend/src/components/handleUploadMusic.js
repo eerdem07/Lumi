@@ -29,12 +29,6 @@ const handleUploadMusic = async ({
   if (!res.ok) {
     throw new Error(res);
   }
-
-  // if (!res.ok) {
-  //   throw new Error(data.message || "Yükleme sırasında hata oluştu.");
-  // }
-
-  // Başarıyla biterse veriyi dönebilir veya sadece return yapabilirsin
   return data;
 };
 

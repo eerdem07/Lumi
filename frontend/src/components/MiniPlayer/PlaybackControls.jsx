@@ -22,7 +22,6 @@ function PlaybackControls({ isPlaying, onPlayPause, isRepeating, onRepeat }) {
         aria-label={isPlaying ? "Durdur" : "Çal"}
       >
         {isPlaying ? (
-          // Pause SVG (daha yumuşak animasyon isteyenler için svg ile)
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

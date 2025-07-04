@@ -36,7 +36,6 @@ export default function MediaCard({
 
   const handlePlayPause = (e) => {
     e.stopPropagation();
-    // Sadece parent'a bildir, kendi içinde state tutma!
     if (onPlayPause) onPlayPause(true);
   };
 

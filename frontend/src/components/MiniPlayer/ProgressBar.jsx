@@ -1,5 +1,4 @@
 function ProgressBar({ currentTime, duration, onSeek, formatTime }) {
-  // Hatalı veya sıfır bölme olmasın diye:
   const percent =
     duration > 0 && !isNaN(duration) ? (currentTime / duration) * 100 : 0;
 

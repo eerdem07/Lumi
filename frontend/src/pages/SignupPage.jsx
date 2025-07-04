@@ -3,8 +3,11 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "../features/userSlice";
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
+import { useNavigate } from "react-router-dom";
+
 const SignupPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     name: "",
@@ -47,7 +50,7 @@ const SignupPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: form.name, // Doğru key!
+          name: form.name,
           email: form.email,
           password: form.password,
         }),
@@ -60,7 +63,6 @@ const SignupPage = () => {
       } else {
         setSuccess(true);
 
-        // Hem Redux, hem localStorage için doğru keylerle kaydet!
         if (data.token && data.user) {
           dispatch(
             setCredentials({
@@ -84,7 +86,7 @@ const SignupPage = () => {
             })
           );
         }
-        setTimeout(() => (window.location.href = "/"), 1200);
+        setTimeout(() => navigate("/"), 1200);
       }
     } catch (err) {
       setError("Bağlantı hatası!");

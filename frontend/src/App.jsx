@@ -8,20 +8,12 @@ import SignupPage from "./pages/SignupPage";
 import { setCredentials } from "./features/userSlice";
 import PrivateRoute from "./PrivateRoute";
 
-// Eğer Auth gerektiren sayfaları ayırmak istersen aşağıya bakabilirsin
 import { useSelector } from "react-redux";
-
-function PrivateRoute({ element }) {
-  const user = useSelector((state) => state.user.user);
-  // isAuthenticated da kullanılabilir
-  return user ? element : <LoginPage />;
-}
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Hem token hem user varsa redux state'e yaz
     const token = localStorage.getItem("token");
     const userStr = localStorage.getItem("user");
     if (token && userStr) {
@@ -29,7 +21,6 @@ function App() {
         const user = JSON.parse(userStr);
         dispatch(setCredentials({ user, token }));
       } catch (e) {
-        // Hatalı user objesi varsa localStorage'ı temizle
         localStorage.removeItem("user");
         localStorage.removeItem("token");
       }

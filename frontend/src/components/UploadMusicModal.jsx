@@ -24,7 +24,6 @@ export default function UploadMusicModal({ isOpen, onClose, onSubmit }) {
     try {
       await onSubmit({ title, album, genre, coverImageUrl, audioFile });
       onClose();
-      // Temizle
       setTitle("");
       setAlbum("");
       setGenre("");

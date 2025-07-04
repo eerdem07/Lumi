@@ -19,7 +19,7 @@ function NowPlayingInfo({
     setError(null);
 
     try {
-      const token = localStorage.getItem("token"); // JWT token'ı burada sakladığını varsayıyorum
+      const token = localStorage.getItem("token");
       const response = await fetch(`${apiUrl}/tracks/${trackId}/like`, {
         method: "POST",
         headers: {

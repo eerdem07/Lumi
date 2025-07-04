@@ -28,7 +28,6 @@ export default function MiniPlayer({ track }) {
       }
     : null;
 
-  // Track değiştiğinde şarkıyı otomatik başlat
   useEffect(() => {
     if (audioRef.current && track) {
       audioRef.current.pause();
@@ -36,16 +35,15 @@ export default function MiniPlayer({ track }) {
       setCurrentTime(0);
       setIsPlaying(false);
 
-      // Oynatıcıya programatik olarak play() çağır, tarayıcı otomatik başlatmaya izin verirse
       setTimeout(() => {
         audioRef.current.load();
         audioRef.current
           .play()
           .then(() => setIsPlaying(true))
-          .catch(() => {}); // Autoplay engeli olabilir, kullanıcı Play'e tıklayınca tekrar çalacak
+          .catch(() => {});
       }, 100);
     }
-  }, [audioSource]); // Burada audioSource değişimini takip etmek daha güvenlidir
+  }, [audioSource]);
 
   const togglePlay = () => {
     if (!audioRef.current) return;

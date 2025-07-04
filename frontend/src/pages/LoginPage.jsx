@@ -4,10 +4,10 @@ import { setCredentials } from "../features/userSlice";
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 import { useNavigate } from "react-router-dom";
-const navigate = useNavigate();
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     email: "",
@@ -51,7 +51,6 @@ const LoginPage = () => {
         setSuccess(true);
 
         if (data.token && data.user) {
-          // Redux ve localStorage senkronizasyonu
           dispatch(
             setCredentials({
               user: {
@@ -64,7 +63,6 @@ const LoginPage = () => {
               token: data.token,
             })
           );
-          // LocalStorage kaydı (App.jsx için zorunlu)
           localStorage.setItem("token", data.token);
           localStorage.setItem(
             "user",
@@ -78,7 +76,7 @@ const LoginPage = () => {
           );
         }
 
-        setTimeout(() => (window.location.href = "/"), 1000);
+        setTimeout(() => navigate("/"), 1000);
       }
     } catch (err) {
       setError("Bağlantı hatası!");

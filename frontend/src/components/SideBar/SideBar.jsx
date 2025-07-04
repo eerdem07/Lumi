@@ -13,12 +13,12 @@ export default function SideBar({ setIsModalOpen, onTrackPlay }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token"); // veya hangi storage'da tutuyorsan
+    const token = localStorage.getItem("token");
     fetch(`${apiUrl}/tracks/liked`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      credentials: "include", // gerekirse, genellikle gerekmez ama auth cookie kullanıyorsan bırakabilirsin
+      credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => {
@@ -35,7 +35,6 @@ export default function SideBar({ setIsModalOpen, onTrackPlay }) {
       songCount: likedTracks.length,
       type: "liked",
     },
-    // Diğer playlistleri ekle
   ];
 
   return (

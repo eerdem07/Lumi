@@ -34,7 +34,6 @@ export default function TopBar() {
 
   // Profil düzenleme fonksiyonu
   const handleEditProfile = () => {
-    // Buraya profil modalı açma veya navigate ekleyebilirsin
     alert("Profil düzenleme yakında!");
   };
 

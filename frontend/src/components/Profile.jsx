@@ -19,7 +19,6 @@ export default function Profile() {
       image: "/placeholder.svg?height=120&width=120",
     },
     { name: "Queen", image: "/placeholder.svg?height=120&width=120" },
-    // Daha fazla sanatçı eklenebilir
   ];
 
   return (
@@ -43,7 +42,6 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* Daha fazla seçenek ikonu, sağ üst köşeye yaslanacak şekilde ayarlandı */}
         <div className="ml-auto">
           <button className="p-2 rounded-full hover:bg-zinc-800">
             <MoreHorizontal className="w-5 h-5 sm:w-6 sm:h-6 text-zinc-400" />
