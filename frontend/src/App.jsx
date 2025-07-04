@@ -6,6 +6,7 @@ import Profile from "./components/Profile";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import { setCredentials } from "./features/userSlice";
+import PrivateRoute from "./PrivateRoute";
 
 // Eğer Auth gerektiren sayfaları ayırmak istersen aşağıya bakabilirsin
 import { useSelector } from "react-redux";
@@ -37,10 +38,24 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<PrivateRoute element={<HomePage />} />} />
-      <Route path="/profile" element={<PrivateRoute element={<Profile />} />} />
-      <Route path="/signup" element={<SignupPage />} />
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <HomePage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        }
+      />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
     </Routes>
   );
 }

@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "../features/userSlice";
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
+import { useNavigate } from "react-router-dom";
+const navigate = useNavigate();
+
 const LoginPage = () => {
   const dispatch = useDispatch();
 
