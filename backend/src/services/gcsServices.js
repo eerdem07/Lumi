@@ -1,16 +1,14 @@
 const { Storage } = require("@google-cloud/storage");
 
-// ENV üzerinden key ve diğer bilgiler
 const credentials = JSON.parse(process.env.GCS_KEY_JSON);
 
 const storage = new Storage({
-  credentials, // JSON anahtar doğrudan burada
+  credentials,
   projectId: process.env.GOOGLE_CLOUD_PROJECT_ID, // .env'de olmalı
 });
 
 const bucketName = process.env.GOOGLE_CLOUD_STORAGE_BUCKET;
 
-// Dosya yükleme fonksiyonu
 async function uploadFile(destination, buffer, mimetype) {
   return new Promise((resolve, reject) => {
     const bucket = storage.bucket(bucketName);
@@ -31,13 +29,11 @@ async function uploadFile(destination, buffer, mimetype) {
   });
 }
 
-// Dosya silme fonksiyonu
 async function deleteFile(destination) {
   const bucket = storage.bucket(bucketName);
   await bucket.file(destination).delete();
 }
 
-// Dosya URL'si oluşturucu
 function getPublicUrl(destination) {
   return `https://storage.googleapis.com/${bucketName}/${destination}`;
 }

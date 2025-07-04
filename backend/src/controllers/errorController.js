@@ -1,12 +1,13 @@
-module.exports = (err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
+class AppError extends Error {
+  constructor(message, statusCode) {
+    super(message);
 
-  console.error(err);
+    this.statusCode = statusCode;
+    this.status = `${statusCode}`.startsWith("4") ? "fail" : "error";
+    this.isOperational = true; // Programatik hataları ayırt etmek için
 
-  res.status(statusCode).json({
-    status: err.status || "error",
-    message: message,
-    stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
-  });
-};
+    Error.captureStackTrace(this, this.constructor);
+  }
+}
+
+module.exports = AppError;

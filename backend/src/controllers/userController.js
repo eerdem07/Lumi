@@ -1,7 +1,8 @@
 const User = require("../models/User");
+
 exports.updateProfile = async (req, res) => {
   try {
-    const userId = req.user.id; // auth middleware'den gelir
+    const userId = req.user.id;
     const { name, bio } = req.body;
 
     if (!name) {

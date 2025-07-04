@@ -10,14 +10,16 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://lumi-frontend-287286640888.europe-west1.run.app",
+    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    optionsSuccessStatus: 204,
   })
 );
+
 app.use(helmet());
 app.use(morgan("dev"));
 
-// ROUTE DOSYALARI
 const authRoutes = require("./src/routes/authRoutes");
 const trackRoutes = require("./src/routes/trackRoutes");
 const mediaRoutes = require("./src/routes/mediaRoutes");
@@ -37,6 +39,10 @@ app.use("/api/tracks/", trackRoutes);
 app.use("/api/media/", mediaRoutes);
 app.use("/api/playlists", playlistRoutes);
 app.use("/api/user", userRoutes);
+
+app.use((req, res, next) => {
+  next(new AppError(`Bu sunucuda ${req.originalUrl} adresi bulunamadı.`, 404));
+});
 
 app.use(errorController);
 

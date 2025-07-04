@@ -4,7 +4,6 @@ const User = require("../models/User");
 module.exports = async (req, res, next) => {
   try {
     let token;
-    // Token çoğunlukla "Authorization: Bearer <token>" şeklinde gelir
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer ")
@@ -16,16 +15,13 @@ module.exports = async (req, res, next) => {
       return res.status(401).json({ message: "Kimlik doğrulama gerekli." });
     }
 
-    // Token’ı doğrula
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Kullanıcıyı bul
     const user = await User.findById(decoded.id);
     if (!user) {
       return res.status(401).json({ message: "Geçersiz kullanıcı." });
     }
 
-    // Kullanıcı bilgisini req'e ata
     req.user = {
       id: user._id,
       role: user.role,

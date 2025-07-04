@@ -16,7 +16,7 @@
     "express",
     "lumi"
   ],
-  "author": "Ahmet Erdem",
+  "author": "Emre Erdem",
   "license": "ISC",
   "dependencies": {
     "@google-cloud/storage": "^7.16.0",
@@ -30,7 +30,9 @@
     "mongoose": "^8.15.1",
     "morgan": "^1.10.0",
     "multer": "^2.0.1",
-    "music-metadata": "^7.14.0"
+    "music-metadata": "^7.14.0",
+    "node-fetch": "^3.3.2",
+    "whatwg-url": "^14.2.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
