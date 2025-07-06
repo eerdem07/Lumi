@@ -3,12 +3,12 @@ import { Heart } from "lucide-react";
 import MiniPlayer from "../components/MiniPlayer/MiniPlayer";
 import SideBar from "../components/SideBar/SideBar";
 import TopBar from "../components/TopBar/TopBar";
-import PlaylistModal from "../components/PlaylistModal";
+import PlaylistModal from "../components/AddPlaylist/PlaylistModal";
 import MediaCard from "../components/Card/MediaCard";
 import { useSelector } from "react-redux";
-// const apiUrl = import.meta.env.VITE_API_BASE_URL;
+import { useNavigate } from "react-router-dom";
 
-const apiUrl = "https://lumi-287286640888.europe-west1.run.app/api";
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,11 +17,13 @@ export default function HomePage() {
 
   const [nowPlaying, setNowPlaying] = useState(null);
 
+  const navigate = useNavigate();
+
   const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     if (!user) {
-      window.location.href = "/login";
+      setTimeout(() => navigate("/login"), 1000);
     }
   }, [user]);
 

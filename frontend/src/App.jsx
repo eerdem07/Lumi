@@ -2,13 +2,11 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import Profile from "./components/Profile";
+import Profile from "./components/Profile/Profile";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import { setCredentials } from "./features/userSlice";
 import PrivateRoute from "./PrivateRoute";
-
-import { useSelector } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();

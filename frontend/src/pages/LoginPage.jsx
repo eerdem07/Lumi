@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../features/userSlice";
-// const apiUrl = import.meta.env.VITE_API_BASE_URL;
-
-const apiUrl = "https://lumi-287286640888.europe-west1.run.app/api";
-
 import { useNavigate } from "react-router-dom";
+
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const LoginPage = () => {
   console.log(apiUrl);

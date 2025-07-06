@@ -11,7 +11,7 @@ export default function UploadMusicModal({ isOpen, onClose, onSubmit }) {
   const [loading, setLoading] = useState(false);
 
   if (!isOpen) return null;
-
+  ("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");

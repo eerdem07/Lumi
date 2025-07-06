@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import SearchBar from "./SearchBar";
 import { Upload } from "lucide-react";
-import UploadMusicModal from "../UploadMusicModal";
+import UploadMusicModal from "../UploadMusic/UploadMusicModal";
 import ProfileDropDown from "./ProfileDropDown";
-
-import handleUploadMusic from "../handleUploadMusic";
+import handleUploadMusic from "../../features/handleUploadMusic";
 
 export default function TopBar() {
   const [showUploadModal, setShowUploadModal] = useState(false);
