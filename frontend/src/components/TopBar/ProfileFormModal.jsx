@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../../features/userSlice";
 import defaultProfilePic from "../../assets/profile-pic.png";
 
-const apiUrl = import.meta.env.VITE_API_BASE_URL;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function ProfileFormModal({ isOpen, onClose }) {
   const user = useSelector((state) => state.user.user);

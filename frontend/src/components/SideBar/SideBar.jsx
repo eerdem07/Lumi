@@ -6,9 +6,8 @@ import LibraryFilters from "./LibraryFilters";
 import RecentlyPlayed from "./RecentlyPlayed";
 import PlaylistList from "./PlaylistList";
 import LikedTracksList from "./LikedTracksList";
-// const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
-const apiUrl = "https://lumi-287286640888.europe-west1.run.app/api";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function SideBar({ setIsModalOpen, onTrackPlay }) {
   const [likedTracks, setLikedTracks] = useState([]);

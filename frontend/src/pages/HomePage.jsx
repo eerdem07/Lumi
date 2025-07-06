@@ -8,7 +8,7 @@ import MediaCard from "../components/Card/MediaCard";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const apiUrl = import.meta.env.VITE_API_BASE_URL;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
