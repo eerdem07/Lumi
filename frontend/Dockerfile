@@ -1,13 +1,15 @@
-# 1. Build aşaması
 FROM node:20 AS builder
 
 WORKDIR /app
+
 COPY package*.json ./
+COPY .env.production ./
+
 COPY . .
+
 RUN npm install
 RUN npm run build
 
-# 2. Serve aşaması
 FROM node:20 AS runner
 
 WORKDIR /app
