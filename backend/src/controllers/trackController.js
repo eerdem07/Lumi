@@ -2,6 +2,7 @@ const Track = require("../models/Track");
 const Artist = require("../models/Artist");
 const Album = require("../models/Album");
 const User = require("../models/User");
+const redisClient = require("../services/redisClient");
 
 exports.getAllTracks = async (req, res) => {
   try {
@@ -143,7 +144,6 @@ exports.changeTrack = async (req, res) => {
     console.log(
       `User ${userId} switched from ${fromTrackId} to ${toTrackId} after ${previousTrackElapsed}s`
     );
-    // Not: Gerçek uygulamada DB'ye yazabilirsin
     res.json({ message: "Müzik değiştirme kaydedildi." });
   } catch (err) {
     console.error(err);
@@ -151,21 +151,33 @@ exports.changeTrack = async (req, res) => {
   }
 };
 
-// controllers/trackController.js
-
 exports.getLikedTracks = async (req, res) => {
   try {
-    const userId = req.user.id; // JWT veya session ile kimlik doğrulama zorunlu!
+    const userId = req.user.id;
+    const cacheKey = `liked_tracks:${userId}`;
 
+    // Önce Redis’te var mı diye bak
+    const cached = await redisClient.get(cacheKey);
+
+    if (cached) {
+      // Varsa, direkt cache’den dön
+      return res.json(JSON.parse(cached));
+    }
+
+    // Yoksa, DB’den al ve cache’e yaz
     const user = await User.findById(userId);
     if (!user)
       return res.status(404).json({ message: "Kullanıcı bulunamadı." });
 
-    // Populate ile track detaylarını çekiyoruz
     const likedTracks = await Track.find({ _id: { $in: user.likedTracks } })
-      .populate("artist", "name") // artist objesi döndürür
-      .populate("album", "name") // istersen albüm bilgisini de ekle
+      .populate("artist", "name")
+      .populate("album", "name")
       .sort({ createdAt: -1 });
+
+    // Cache’e kaydet (örnek: 1 saat süreli)
+    await redisClient.set(cacheKey, JSON.stringify(likedTracks), {
+      EX: 3600, // 1 saat (3600 sn)
+    });
 
     res.json(likedTracks);
   } catch (err) {
@@ -173,3 +185,23 @@ exports.getLikedTracks = async (req, res) => {
     res.status(500).json({ message: "Sunucu hatası" });
   }
 };
+
+// exports.getLikedTracks = async (req, res) => {
+//   try {
+//     const userId = req.user.id;
+
+//     const user = await User.findById(userId);
+//     if (!user)
+//       return res.status(404).json({ message: "Kullanıcı bulunamadı." });
+
+//     const likedTracks = await Track.find({ _id: { $in: user.likedTracks } })
+//       .populate("artist", "name")
+//       .populate("album", "name")
+//       .sort({ createdAt: -1 });
+
+//     res.json(likedTracks);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: "Sunucu hatası" });
+//   }
+// };

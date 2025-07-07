@@ -26,6 +26,7 @@ const mediaRoutes = require("./src/routes/mediaRoutes");
 const errorController = require("./src/controllers/errorController");
 const playlistRoutes = require("./src/routes/playlistRoutes");
 const userRoutes = require("./src/routes/userRoutes");
+const statusRoutes = require("./src/routes/statusRoutes");
 
 app.get("/", (req, res) => {
   res.status(200).json({
@@ -39,6 +40,7 @@ app.use("/api/tracks/", trackRoutes);
 app.use("/api/media/", mediaRoutes);
 app.use("/api/playlists", playlistRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/status/", statusRoutes);
 
 app.use((req, res, next) => {
   next(new AppError(`Bu sunucuda ${req.originalUrl} adresi bulunamadı.`, 404));
