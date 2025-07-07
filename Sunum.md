@@ -1,4 +1,5 @@
-Uygulamanın tüm gereksinimlerinin çalıştığını gösteren tanıtım video linki eklenecek
+[Uygulamanın tüm gereksinimlerinin çalıştığını gösteren tanıtım video linki eklenecek
+](https://youtu.be/0GOqLY3OMuI)
 
 # Avakado Müzik Uygulaması Tanıtım Videosu
 
